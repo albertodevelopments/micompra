@@ -1,0 +1,27 @@
+.container{
+    width: 200px;
+    border-right: 1px solid var(--light);
+    min-height: calc(100vh - 5rem);
+    padding: 0.5rem;
+}
+
+.menuItem{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-style: italic;
+    transition: all .3s ease;
+    padding: 0.5rem;
+}
+
+.menuItem:hover{    
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.itemCaption{
+    margin-left: 0.5rem;
+}

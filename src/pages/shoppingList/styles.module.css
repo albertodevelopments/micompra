@@ -1,0 +1,17 @@
+.container{
+    background: #fff;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: 1px solid #D6D697;
+}
+
+.title{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--gray);
+}

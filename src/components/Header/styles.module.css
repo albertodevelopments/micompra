@@ -1,0 +1,21 @@
+.container{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    background: var(--primary);
+    color: #fff;
+    width: 799px;
+    height: 5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.title{
+    font-size: 1.6rem;
+}
+
+.logout:hover{
+    cursor: pointer;
+    color: var(--secondary);
+}

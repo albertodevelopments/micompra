@@ -1,0 +1,43 @@
+{
+	"name": "micompra",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "webpack serve --mode development"
+	},
+	"keywords": [],
+	"author": "Alberto Rodriguez",
+	"license": "ISC",
+	"dependencies": {
+		"@babel/cli": "^7.12.10",
+		"@babel/core": "^7.12.10",
+		"@babel/plugin-transform-regenerator": "^7.12.1",
+		"@babel/preset-env": "^7.12.11",
+		"@babel/preset-react": "^7.12.10",
+		"babel-eslint": "^10.1.0",
+		"babel-loader": "^8.2.2",
+		"css-loader": "^5.0.1",
+		"eslint": "^7.17.0",
+		"eslint-config-prettier": "^7.1.0",
+		"eslint-plugin-prettier": "^3.3.1",
+		"file-loader": "^6.2.0",
+		"firebase": "^8.2.2",
+		"firebase-tools": "^9.2.0",
+		"formik": "^2.2.6",
+		"html-webpack-plugin": "^4.5.1",
+		"husky": "^4.3.7",
+		"lint-staged": "^10.5.3",
+		"prettier": "^2.2.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-router-dom": "^5.2.0",
+		"style-loader": "^2.0.0",
+		"webpack": "^5.12.3",
+		"webpack-cli": "^4.3.1",
+		"yup": "^0.32.8"
+	},
+	"devDependencies": {
+		"webpack-dev-server": "^3.11.1"
+	}
+}
