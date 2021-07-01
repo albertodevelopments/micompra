@@ -1,0 +1,39 @@
+.header{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    background: var(--primary-color);
+    color: #fff;
+    width: 100%;
+    height: var(--header-height);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+@media screen and (min-width: 1024px){
+    .header{
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    .header{
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+.title{
+    font-size: 1.4rem;
+}
+
+.logout{
+    font-size: 1.5rem;
+}
+
+.logout:hover{
+    cursor: pointer;
+    color: var(--secondary-color);
+}

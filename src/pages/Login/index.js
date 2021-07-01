@@ -1,28 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 // Dependencias
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 // Servicios
-import { signInByEmail } from '../../firebase/client'
+import {
+    signInByEmail,
+    fetchShoppingLists,
+    signInWithGoogle,
+} from '../../firebase/client'
 
-import styles from './styles.module.css'
-import Alert from '../../components/Alert'
+// Componentes
+import Alert from 'components/Alert'
+import { GoogleLogo } from 'components/Icons'
+
+// Contexto
+import { AppContext } from 'context/AppContext'
+
+import './styles.css'
 
 const Login = () => {
     /* -------------------------------------------------------------------- */
     /* --------------------- CONSTANTES Y DECLARACIONES ------------------- */
     /* -------------------------------------------------------------------- */
-    const [user, setUser] = useState({
+    const [inputData, setInputData] = useState({
         email: '',
         password: '',
     })
-    const { email, password } = user
-    const [isValid, setValid] = useState(false)
-    const [errorEmail, setErrorEmail] = useState(null)
-    const [errorPassword, setErrorPassword] = useState(null)
-    const [errorUnknown, setErrorUnknown] = useState(null)
+    const { email, password } = inputData
+    const [error, setError] = useState(null)
     const history = useHistory()
+    const { setUser, shoppingLists, setShoppingLists } = useContext(AppContext)
 
     /* -------------------------------------------------------------------- */
     /* ----------------------------- FUNCIONES ---------------------------- */
@@ -31,8 +39,15 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            await signInByEmail(user)
-            history.push('/shopping-list')
+            const response = await signInByEmail(inputData)
+            const { user } = response
+            const { displayName, uid } = user
+
+            setUser({ name: displayName, id: uid })
+
+            // Guardamos las listas de la compra para que estén disponibles en toda la aplicación
+            const listOfLists = await fetchShoppingLists(uid)
+            setShoppingLists(listOfLists)
         } catch (error) {
             console.log(error)
             const { code } = error
@@ -41,79 +56,90 @@ const Login = () => {
     }
 
     const handleError = errorCode => {
-        setErrorEmail(null)
-        setErrorPassword(null)
-        setErrorUnknown(null)
-        if (errorCode === 'auth/user-not-found') {
-            setErrorEmail('Esta cuenta de correo no existe.')
+        setError(null)
+
+        if (errorCode === 'auth/invalid-email') {
+            setError('La cuenta de correo no es válida.')
+        } else if (errorCode === 'auth/user-not-found') {
+            setError('La cuenta de correo no existe.')
         } else if (errorCode === 'auth/wrong-password') {
-            setErrorPassword('Contraseña incorrecta.')
+            setError('Contraseña incorrecta.')
         } else {
-            setErrorUnknown('Error al iniciar sesión.')
+            setError('Error al iniciar sesión.')
         }
     }
 
     const handleChange = e => {
-        setUser({
-            ...user,
+        setInputData({
+            ...inputData,
             [e.target.name]: e.target.value,
         })
+    }
+
+    const handleLoginWithGoogle = async () => {
+        try {
+            const user = await signInWithGoogle()
+            const { name, uid } = user
+
+            setUser({ name, id: uid })
+
+            // Guardamos las listas de la compra para que estén disponibles en toda la aplicación
+            const listOfLists = await fetchShoppingLists(uid)
+            setShoppingLists(listOfLists)
+        } catch (error) {
+            console.log('error login google', error)
+        }
     }
 
     /* -------------------------------------------------------------------- */
     /* ---------------------------- USE EFFECTS --------------------------- */
     /* -------------------------------------------------------------------- */
     useEffect(() => {
-        setValid(email !== '' && password !== '' && password.length >= 6)
-    }, [user])
+        if (!shoppingLists) return
+
+        history.push('/shopping-list')
+    }, [shoppingLists])
 
     /* -------------------------------------------------------------------- */
     /* --------------------------- RENDERIZADO ---------------------------- */
     /* -------------------------------------------------------------------- */
     return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>Inicio de Sesión</h1>
-            <form className={styles.form} onSubmit={handleSubmit}>
+        <div className='login-container'>
+            <h1 className='login-title'>Inicio de Sesión</h1>
+            <form className='login-form' onSubmit={handleSubmit}>
                 <input
-                    className={styles.inputText}
+                    autoFocus
+                    className='input form__input'
                     type='email'
                     name='email'
                     value={email}
                     placeholder='Introduce el e-mail'
                     onChange={handleChange}
                 />
-                {errorEmail && (
-                    <div className={styles.errorMessage}>
-                        <Alert message={errorEmail} />
-                    </div>
-                )}
                 <input
-                    className={styles.inputText}
+                    className='input form__input'
                     type='password'
                     name='password'
                     value={password}
                     placeholder='Introduce la contraseña'
                     onChange={handleChange}
                 />
-                {errorPassword && (
-                    <div className={styles.errorMessage}>
-                        <Alert message={errorPassword} />
-                    </div>
-                )}
-                {errorUnknown && (
-                    <div className={styles.errorMessage}>
-                        <Alert message={errorUnknown} />
-                    </div>
-                )}
-                <button
-                    className={
-                        isValid ? styles.submitButton : styles.disabledButton
-                    }
-                    type='submit'
-                    disabled={!isValid}
-                >
-                    Iniciar Sesión
-                </button>
+                {error && <Alert type='error' message={error} />}
+                <div className='login-form__buttons'>
+                    <button className='btn login-form__btn' type='submit'>
+                        Iniciar Sesión
+                    </button>
+                    <button
+                        className='login-form__google-btn'
+                        type='button'
+                        onClick={handleLoginWithGoogle}
+                    >
+                        <GoogleLogo /> Iniciar con Google
+                    </button>
+                </div>
+                <Link to='/new-account' className='link'>
+                    ¿No tienes cuenta? ¡Regístrate!
+                </Link>
             </form>
         </div>
     )

@@ -1,0 +1,83 @@
+.table__go{
+    color: var(--secondary);
+}
+
+/* .lists-title{
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.lists-input-box{
+    width: 80%;
+    color: var(--text);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--background);
+    border: 1px solid var(--secondary-color);
+    border-radius: 0.25rem;    
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.lists-form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.lists-form__name{
+    margin-bottom: 1rem;
+}
+
+.lists-form__btn{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.lists-table{    
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lists-table__thead{
+    font-weight: bold;   
+}
+
+.lists-table__th{
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.lists-table__td{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0.4rem 0.25rem;
+}
+
+.lists-table__tr{
+    border-top: 1px solid var(--gray);    
+    opacity: 0.8;
+}
+
+.lists-table__tr:hover{
+    cursor: pointer;
+}
+
+.lists-table__del{
+    color: var(--error);
+}
+
+.lists-table__edit{
+    margin-top: 0.25rem;
+    z-index: 100;
+    color: var(--primary-color);
+}
+
+.lists-table__icon-cell{
+    width: 30px;
+} */

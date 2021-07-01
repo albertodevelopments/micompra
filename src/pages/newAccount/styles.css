@@ -1,0 +1,32 @@
+.new-account-container{
+    background: #fff;
+    margin: 0 auto;
+    margin: 3rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: 1px solid var(--primary-color);
+}
+
+.new-account-title{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--text);
+}
+
+.new-account-form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.new-account-form__input{
+    margin-bottom: 0.5rem;
+}
+
+.new-account-form__btn{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

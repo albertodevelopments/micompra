@@ -1,0 +1,22 @@
+.cell-input{
+    width: 100%;
+    border: none;
+    padding: 0.4rem 0.25rem;
+}
+
+.cell-input:hover{
+    cursor: pointer;
+}
+
+.cell-input:focus{
+    outline: none;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.align-right{
+    text-align: right;
+}
+
+.align-left{
+    text-align: left;
+}

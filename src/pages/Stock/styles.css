@@ -1,0 +1,14 @@
+.stock-td__name{
+    width: 70%;
+    text-align: left;
+}
+
+.stock-td__quantity{
+    width: 20%;
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+.form__create-list{
+    margin-top: 1rem;
+}

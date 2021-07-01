@@ -1,15 +1,39 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 
-// Componentes
-import LogoutIcon from '../Icons/Logout'
+// Contexto
+import { AppContext } from 'context/AppContext'
 
-import styles from './styles.module.css'
+// Servicios
+import { signOut } from '../../firebase/client'
+
+import './styles.css'
 
 const Header = () => {
+    /* -------------------------------------------------------------------- */
+    /* --------------------- CONSTANTES Y DECLARACIONES ------------------- */
+    /* -------------------------------------------------------------------- */
+    const { user, clearContext } = useContext(AppContext)
+    const { name } = user
+    const history = useHistory()
+
+    /* -------------------------------------------------------------------- */
+    /* ----------------------------- FUNCIONES ---------------------------- */
+    /* -------------------------------------------------------------------- */
+    const handleLogOut = () => {
+        clearContext()
+        signOut()
+        history.push('/login')
+    }
+
     return (
-        <header className={styles.container}>
-            <h1 className={styles.title}>Hola, Alberto</h1>
-            <LogoutIcon className={styles.logout} />
+        <header className='header'>
+            <h1 className='title'>Hola, {user && name}</h1>
+            <i
+                className='fa fa-sign-out logout'
+                aria-hidden='true'
+                onClick={handleLogOut}
+            ></i>
         </header>
     )
 }

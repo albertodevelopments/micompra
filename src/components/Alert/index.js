@@ -1,9 +1,13 @@
 import React from 'react'
 
-import styles from './styles.module.css'
+import './styles.css'
 
-const Alert = ({ message }) => {
-    return <span className={styles.message}>{message}</span>
+const Alert = ({ type, message }) => {
+    return (
+        <span className={`message ${type === 'error' ? 'error' : 'success'}`}>
+            {message}
+        </span>
+    )
 }
 
 export default Alert

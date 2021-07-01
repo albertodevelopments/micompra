@@ -1,14 +1,19 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 
 // Servicios
 import { createNewList } from '../../firebase/client'
 
-// Componentes
-import Alert from '../../components/Alert'
-import Menu from '../../components/Menu'
-import Header from '../../components/Header'
+// Dependencias
+import { useHistory } from 'react-router-dom'
 
-import styles from './styles.module.css'
+// Componentes
+import Alert from 'components/Alert'
+import MainLayout from 'components/MainLayout'
+
+// Contexto
+import { AppContext } from 'context/AppContext'
+
+import './styles.css'
 
 const NewList = () => {
     /* -------------------------------------------------------------------- */
@@ -18,6 +23,8 @@ const NewList = () => {
     const nameRef = useRef()
     const [errorMessage, setErrorMessage] = useState(null)
     const [isValid, setValid] = useState(false)
+    const history = useHistory()
+    const { user } = useContext(AppContext)
 
     /* -------------------------------------------------------------------- */
     /* ----------------------------- FUNCIONES ---------------------------- */
@@ -64,11 +71,16 @@ const NewList = () => {
         e.preventDefault()
 
         if (!name || name.trim() === '') {
-            setErrorMessage('Introduzca un nombre para la lista')
+            setErrorMessage('Introduce un nombre para la lista')
         }
 
         try {
-            createNewList({ name })
+            const list = {
+                userId: user.id,
+                name,
+            }
+            createNewList(list)
+            history.push('/shopping-lists')
         } catch (error) {
             console.log(error)
         }
@@ -90,44 +102,32 @@ const NewList = () => {
     /* -------------------------------------------------------------------- */
     return (
         <>
-            <div className={styles.wrapper}>
-                <Header />
-                <section className={styles.container}>
-                    <Menu />
-                    <main className={styles.body}>
-                        <h1 className={styles.title}>
-                            Nueva lista de la compra
-                        </h1>
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                className={styles.name}
-                                type='text'
-                                name='name'
-                                value={name}
-                                ref={nameRef}
-                                placeholder='Introduce el nombre de la lista'
-                                onChange={handleChange}
-                            />
-                            {errorMessage && (
-                                <div className={styles.errorMessage}>
-                                    <Alert message={errorMessage} />
-                                </div>
-                            )}
-                            <button
-                                className={
-                                    isValid
-                                        ? styles.submitButton
-                                        : styles.disabledButton
-                                }
-                                type='submit'
-                                disabled={!isValid}
-                            >
-                                Guardar
-                            </button>
-                        </form>
-                    </main>
+            <MainLayout>
+                <section className='new-list-container'>
+                    <h1 className='new-list-title'>Nueva lista de la compra</h1>
+                    <form className='new-list-form' onSubmit={handleSubmit}>
+                        <input
+                            className='input'
+                            type='text'
+                            name='name'
+                            value={name}
+                            ref={nameRef}
+                            placeholder='Introduce el nombre de la lista'
+                            onChange={handleChange}
+                        />
+                        {errorMessage && <Alert message={errorMessage} />}
+                        <button
+                            className={`btn new-list-form__btn ${
+                                isValid ? '' : ' btn-disabled'
+                            }`}
+                            type='submit'
+                            disabled={!isValid}
+                        >
+                            Guardar
+                        </button>
+                    </form>
                 </section>
-            </div>
+            </MainLayout>
         </>
     )
 }

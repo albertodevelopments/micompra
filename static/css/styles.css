@@ -1,10 +1,19 @@
+/*-----------------------------------------------------------------*/
+/*---------------------- ESTILOS GENERALES ------------------------*/
+/*-----------------------------------------------------------------*/
+
 :root{
-    --background: #f1faee;
-    --primary: #1d3557;
-    --secondary: #677a96;
+    --background: #f3f2ed;
+    --primary-color: #1d3557;
+    --secondary-color: #677a96;
     --text: #293241;
-    --light: #b2b3b2;
+    --light: #f4f7f4;
+    --gray: #7e8ba7aa;
     --error: #b81926;
+    --header-height: 4rem;
+    --width-sm: 350px;
+    --font: 14px;
+    --success: #11a722;
 
     /* --blue:#1DA1F2;
     --dark-blue: #1a85c7;
@@ -18,33 +27,173 @@
 html,
 body {
     width: 100%;
-    height: calc(100% - 5rem);
+    margin: 0;
+    height: calc(100vh - var(--header-height-sm));
     background-color: var(--background);
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;    
+    font-size: var(--font);
 }
 
 a:link {
-    text-decoration: none;
+    text-decoration: none;   
 }
 
 a:visited {
-    text-decoration: none;
+    text-decoration: none;    
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;    
 }
 
 a:active {
-    text-decoration: underline;
+    text-decoration: none;   
 }
 
 ul {
     list-style: none;
+}
+
+/*-----------------------------------------------------------------*/
+/* ----------------------- ESTILOS COMUNES ------------------------*/
+/*-----------------------------------------------------------------*/
+
+.btn{
+    display: block;
+    padding: 0.65rem 1.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    color: white;
+    transition: all .3s ease;
+}
+
+.btn:hover{
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--secondary-color);
+}
+
+.btn:focus{
+    outline: none;
+}
+.btn-disabled:hover{
+    cursor: not-allowed;
+}
+
+.input{
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.input:focus{
+    outline: none;
+}
+
+.input::placeholder{
+    color: var(--secondary-color);
+    font-style: italic;
+    font-weight: normal;
+}
+
+.input-error{
+    border-color: var(--error);
+    border-width: 3px;
+}
+
+.input-box{
+    width: 80%;
+    color: var(--text);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--background);
+    border: 1px solid var(--secondary-color);
+    border-radius: 0.25rem;    
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-box__title{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.input-box__form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.form__input{
+    margin-bottom: 1rem;
+}
+
+.form__input:last-of-type{
+    margin-bottom: 2rem;
+}
+
+.form__btn{
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.table-container{
+    width: 80%;
+    color: var(--text);
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 0.25rem; 
+    padding: 0.5rem;
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table__td{
+    padding: 0.5rem 0;
+}
+
+.table__tr:not(:first-child){
+    border-top: 1px solid var(--gray);    
+}
+
+.table__tr:hover{
+    cursor: pointer;
+}
+
+.table__edit{
+    margin-top: 0.25rem;
+    z-index: 100;
+    color: var(--primary-color);
+}
+
+.table__del{
+    color: var(--error);
+}
+
+.table__icon-cell{
+    width: 30px;
+}
+
+.message-container{
+    width: 80%;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.link{
+    font-style: italic;
+    color: var(--primary-color);
 }
