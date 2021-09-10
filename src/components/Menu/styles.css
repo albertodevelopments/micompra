@@ -1,17 +1,17 @@
 .nav{
     position: fixed;
     top: var(--header-height);
-    width: 200px;
+    width: 250px;
     height: calc(100vh - var(--header-height));
     background: #fff;
     border-right: 1px solid var(--secondary-color);
-    transform: translateX(-200px);
+    transform: translateX(-250px);
     transition: transform .3s;
 }
 
 @media screen and (min-width: 768px){
     .nav{
-        transform: translateX(-150px);
+        transform: translateX(-200px);
     }
 }
 
@@ -22,7 +22,7 @@
 }
 
 .nav--show{
-    transform: translateX(-150px);
+    transform: translateX(-200px);
 }
 
 .main-menu{
@@ -30,7 +30,7 @@
 }
 
 .main-menu--show{
-    transform: translateX(150px);
+    transform: translateX(200px);
 }
 
 .main-menu--show .main-menu__item{
@@ -38,7 +38,7 @@
 }
 
 .main-menu--show .main-menu__icon{
-    transform: translateX(200px);
+    transform: translateX(200px);    
 }
 
 .main-menu__item{
@@ -63,13 +63,13 @@
 
 @media screen and (min-width: 768px){
     .main-menu__icon{
-        transform: translateX(150px);
+        transform: translateX(200px);        
     }
 }
 
 @media screen and (min-width: 1024px){
     .main-menu__icon{
-        transform: translateX(0);
+        transform: translateX(0);        
     }
 }
 
@@ -79,7 +79,7 @@
     color: var(--text);
     width: 30px;
     height: 30px;
-    left: 200px;
+    left: 250px;
     padding: 1rem;
     transition: color .3s;
     z-index: 100;

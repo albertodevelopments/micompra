@@ -193,14 +193,14 @@ const Stock = () => {
                 <form className='input-box__form' onSubmit={handleSubmit}>
                     <input
                         type='text'
-                        className='input form__input'
+                        className='input stock__input'
                         name='name'
                         placeholder='Nombre del producto'
                         onChange={handleChange}
                     />
                     <input
                         type='number'
-                        className='input form__input'
+                        className='input stock__input'
                         name='quantity'
                         placeholder='Cantidad actual'
                         onChange={handleChange}

@@ -13,8 +13,12 @@ const Header = () => {
     /* -------------------------------------------------------------------- */
     /* --------------------- CONSTANTES Y DECLARACIONES ------------------- */
     /* -------------------------------------------------------------------- */
-    const { user, clearContext } = useContext(AppContext)
-    const { name } = user
+    //const { user, clearContext } = useContext(AppContext)
+    const { clearContext } = useContext(AppContext)
+    //const { name } = user
+
+    const user = {}
+    const name = 'Alberto Rodríguez'
     const history = useHistory()
 
     /* -------------------------------------------------------------------- */

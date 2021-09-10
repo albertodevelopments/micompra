@@ -4,8 +4,8 @@ export const GoogleLogo = props => {
     return (
         <svg
             style={{ marginRight: '5px' }}
-            width={25}
-            height={25}
+            width={15}
+            height={15}
             viewBox='0 0 256 262'
             preserveAspectRatio='xMidYMid'
             {...props}

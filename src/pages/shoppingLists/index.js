@@ -197,7 +197,7 @@ const ShoppingLists = () => {
                 <form className='input-box__form' onSubmit={handleSubmit}>
                     <input
                         type='text'
-                        className='input form__input'
+                        className='input shopping-lists__input'
                         name='name'
                         value={name}
                         ref={nameRef}

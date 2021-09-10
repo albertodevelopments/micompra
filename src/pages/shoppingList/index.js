@@ -209,13 +209,13 @@ const ShoppingList = () => {
                             </h1>
                             <input
                                 type='text'
-                                className='input form__input'
+                                className='input shopping-list__input'
                                 name='name'
                                 onChange={handleChangeInput}
                             />
                             <input
                                 type='number'
-                                className='input form__input'
+                                className='input shopping-list__input'
                                 name='quantity'
                                 onChange={handleChangeInput}
                             />
@@ -294,7 +294,7 @@ const ShoppingList = () => {
                     )}
                 </>
             ) : (
-                <p>No hay listas de la compra creadas</p>
+                <p className='message'>No hay listas de la compra creadas</p>
             )}
 
             {/* <div className='list-table'>

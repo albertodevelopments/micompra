@@ -9,31 +9,58 @@
     width: 100%;
     height: var(--header-height);
     padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0 auto;
 }
-
-@media screen and (min-width: 1024px){
-    .header{
-        width: 70%;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (min-width: 1400px){
-    .header{
-        width: 60%;
-        margin: 0 auto;
-    }
-}
-
 .title{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .logout{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .logout:hover{
     cursor: pointer;
     color: var(--secondary-color);
+}
+
+
+@media (min-width: 576px) {
+    .title{
+        font-size: 1.4rem;
+    }
+    
+    .logout{
+        font-size: 1.5rem;
+    }     
+}
+
+@media (min-width: 768px) {
+    .title{
+        font-size: 1.5rem;
+    }
+    
+    .logout{
+        font-size: 1.6rem;
+    } 
+}
+
+@media (min-width: 1024px) {
+    .header{
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .header{
+        width: 70%;
+    }
+
+    .title{
+        font-size: 1.6rem;
+    }
+    
+    .logout{
+        font-size: 1.7rem;
+    } 
 }

@@ -109,7 +109,7 @@ const Login = () => {
             <form className='login-form' onSubmit={handleSubmit}>
                 <input
                     autoFocus
-                    className='input form__input'
+                    className='input login-form__input'
                     type='email'
                     name='email'
                     value={email}
@@ -117,7 +117,7 @@ const Login = () => {
                     onChange={handleChange}
                 />
                 <input
-                    className='input form__input'
+                    className='input login-form__input'
                     type='password'
                     name='password'
                     value={password}

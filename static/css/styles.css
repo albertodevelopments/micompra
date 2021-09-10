@@ -3,24 +3,17 @@
 /*-----------------------------------------------------------------*/
 
 :root{
-    --background: #f3f2ed;
+    --light: #e6e5e3;
     --primary-color: #1d3557;
     --secondary-color: #677a96;
     --text: #293241;
-    --light: #f4f7f4;
+    --light: #eaebec;
     --gray: #7e8ba7aa;
     --error: #b81926;
     --header-height: 4rem;
     --width-sm: 350px;
     --font: 14px;
     --success: #11a722;
-
-    /* --blue:#1DA1F2;
-    --dark-blue: #1a85c7;
-    --pale-blue: #e4f3fc;
-    --light-gray: #5b7083;
-    --pale-gray: #e3e9ee;
-    --error: #ab1414;     */
 }
 
 /* Reglas de normalización */
@@ -29,7 +22,7 @@ body {
     width: 100%;
     margin: 0;
     height: calc(100vh - var(--header-height-sm));
-    background-color: var(--background);
+    background-color: var(--light);
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
@@ -69,6 +62,8 @@ ul {
     border: 1px solid var(--secondary-color);
     background-color: var(--primary-color);
     color: white;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
     transition: all .3s ease;
 }
 
@@ -86,10 +81,17 @@ ul {
 }
 
 .input{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
     padding: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     border: none;
     border-bottom: 1px solid var(--secondary-color);
+}
+
+.input:last-of-type{
+    margin-bottom: 2rem;
 }
 
 .input:focus{
@@ -112,33 +114,31 @@ ul {
     color: var(--text);
     margin-left: auto;
     margin-right: auto;
-    background-color: var(--background);
+    background-color: var(--light);
     border: 1px solid var(--secondary-color);
     border-radius: 0.25rem;    
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 40px;    
 }
 
 .input-box__title{
     text-align: center;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--text);
+}
+
+
+@media (min-width: 576px) {
+    .input-box__title{
+        font-size: 2rem;
+    }
 }
 
 .input-box__form{
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-}
-
-.form__input{
-    margin-bottom: 1rem;
-}
-
-.form__input:last-of-type{
-    margin-bottom: 2rem;
+    padding: 1rem;    
 }
 
 .form__btn{
@@ -149,7 +149,9 @@ ul {
 .table-container{
     width: 80%;
     color: var(--text);
-    margin: 0 auto;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
     margin-bottom: 1rem;
     border: 1px solid var(--secondary-color);
     border-radius: 0.25rem; 
@@ -194,6 +196,12 @@ ul {
 }
 
 .link{
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
     font-style: italic;
     color: var(--primary-color);
+    text-align: center;
+    font-size: 0.9rem;
+    
 }
